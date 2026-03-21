@@ -123,7 +123,7 @@ impl Config {
 	pub fn default_config_path() -> Result<PathBuf> {
 		match dirs::config_dir() {
 			Some(dir) => {
-				let file_path = Path::new(&dir).join("ozone").join("config.yaml");
+				let file_path = Path::new(&dir).join("ozone").join("config.kdl");
 
 				Ok(file_path)
 			}
@@ -149,13 +149,13 @@ impl Config {
 	pub fn get_default_config_path() -> String {
 		if let Some(mut config_dir) = dirs::config_dir() {
 			config_dir.push("ozone");
-			config_dir.push("config.yaml");
+			config_dir.push("config.kdl");
 			config_dir.to_string_lossy().into_owned()
 		} else {
 			tracing::warn!(
-				"Could not determine user config directory, falling back to 'config.yaml'"
+				"Could not determine user config directory, falling back to 'config.kdl'"
 			);
-			"config.yaml".to_string()
+			"config.kdl".to_string()
 		}
 	}
 
