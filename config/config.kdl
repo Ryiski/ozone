@@ -1,0 +1,8 @@
+out-dir "./generated"
+adblock {
+    soa ns=dns-core-1.example.labs email=dns.example.labs refresh="12h" retry="15m" expire="3w" min-ttl="2h"
+}
+bind {
+    include "./bind/**/*.kdl"
+}
+include "./zones/*.kdl"

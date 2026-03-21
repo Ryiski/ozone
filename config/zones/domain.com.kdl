@@ -1,0 +1,37 @@
+zone domain=domain.com ttl="3600" {
+    records {// SOA Record
+        soa ns=dns-core-1.domain.com email=dns.domain.com refresh="12h" retry="15m" expire="3w" min-ttl="2h"
+        // NS Records
+        ns name=@ ttl="86400" value=dns-core-1.domain.com.
+        ns name=@ ttl="86400" value=dns-core-2.domain.com.
+        // A Records
+        a name=dns-core-1 ttl="86400" value="192.168.42.2/24"
+        a name=dns-core-2 ttl="86400" value="192.168.42.3/24"
+        a name=@ value="192.168.42.100/24"
+        a name=www value="192.168.42.100"
+        a name=*.www value="192.168.42.11"
+        a name=idm value="10.12.0.10/8"
+        a name=priv value="192.168.0.11/16"
+        // AAAA
+        aaaa name=dns-core-1 ttl="86400" value="fdf4:e2e0:df12:a100::2/64"
+        aaaa name=dns-core-2 ttl="86400" value="fdf4:e2e0:df12:a100::3/64"
+        aaaa name=*.www ttl="7200" value=fdf4:e2e0:df12:a100::11
+        aaaa name=www ttl="7200" value="fdf4:e2e0:df12:a100::11/64"
+        // CNAME
+        cname name=dns1 value=dns-core-1.domain.com.
+        cname name=dns2 value=dns-core-2.domain.com.
+        cname name=ns1 value=dns-core-1.domain.com.
+        cname name=ns2 value=dns-core-2.domain.com.
+        // MX
+        mx name=@ priority=1 value=aspmx.l.google.com.
+        mx name=@ priority=5 value=alt1.aspmx.l.google.com.
+        mx name=@ priority=5 value=alt2.aspmx.l.google.com.
+        mx name=@ priority=10 value=alt3.aspmx.l.google.com.
+        mx name=@ priority=10 value=alt4.aspmx.l.google.com.
+        // TXT
+        txt name=@ ttl="6400" value="v=spf1 includespf.dynect.net ~all"
+        txt name=mail value=google-auth
+        // SRV
+        srv name=_ntp._udp value=idm.domain.com. port=123 priority=0 weight=100
+    }
+}

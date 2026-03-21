@@ -1,0 +1,8 @@
+view name=external recursion=#true {
+    acls {
+        - external-wan
+    }
+    zones {
+        - example.com
+    }
+}

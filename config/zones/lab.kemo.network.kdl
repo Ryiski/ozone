@@ -1,0 +1,23 @@
+zone domain=lab.kemo.network ttl="3600" {
+    records {
+        soa ns=dns-core-1.kemo.labs email=dns.kemo.labs refresh="12h" retry="15m" expire="3w" min-ttl="2h"
+        ns name=@ ttl="86400" value=dns-core-1.kemo.labs.
+        ns name=@ ttl="86400" value=dns-core-2.kemo.labs.
+        a name=zerotier ttl="6400" value="192.168.42.23"
+        a name=vcenter ttl="6400" value="192.168.42.30"
+        a name=rocinante ttl="6400" value="192.168.42.50"
+        a name=jfrog-artifactory ttl="6400" value="192.168.77.7"
+        a name=sno-ocp ttl="6400" value="192.168.77.71/24"
+        a name=api.sno-ocp ttl="6400" value="192.168.77.71"
+        a name=*.apps.sno-ocp ttl="6400" value="192.168.77.71"
+        a name=core-ocp ttl="6400" value="192.168.51.72/24"
+        a name=api.core-ocp ttl="6400" value="192.168.51.72"
+        a name=*.apps.core-ocp ttl="6400" value="192.168.51.73"
+        a name=loe-ocp ttl="6400" value="192.168.42.74/24"
+        a name=api.loe-ocp ttl="6400" value="192.168.42.74"
+        a name=*.apps.loe-ocp ttl="6400" value="192.168.42.75"
+        a name=vsphere-ocp ttl="6400" value="192.168.42.76"
+        a name=api.vsphere-ocp ttl="6400" value="192.168.42.76"
+        a name=*.apps.vsphere-ocp ttl="6400" value="192.168.42.77"
+    }
+}

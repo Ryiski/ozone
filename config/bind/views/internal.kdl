@@ -1,0 +1,21 @@
+view name=internal recursion=#true {
+    acls {
+        - private-nets
+    }
+    redirect {
+        - "1.1.1.1"
+        - "1.0.0.1"
+    }
+    redirect-zone domain=tosins-lab.com {
+        - "192.168.1.56"
+    }
+    redirect-zone domain=dsal.labs {
+        - "10.1.241.136"
+    }
+    zones {
+        - example.labs
+        - example.net
+        - lab.kemo.network
+        - d77.kemo.labs
+    }
+}

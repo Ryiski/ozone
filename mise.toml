@@ -1,0 +1,10 @@
+[tools]
+bun = "latest"
+hk = "latest"
+"ubi:DevinR528/cargo-sort" = "latest"
+"ubi:casey/just" = "latest"
+"ubi:est31/cargo-udeps" = "latest"
+"ubi:mainmatter/cargo-autoinherit" = "latest"
+"ubi:watchexec/watchexec" = "latest"
+node = "lts"
+pnpm = "latest"

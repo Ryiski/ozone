@@ -1,0 +1,28 @@
+[package]
+name = "lib-tmpl"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+askama = { workspace = true }
+argh = { workspace = true }
+derive_more = { workspace = true }
+dirs = { workspace = true }
+kdl = { workspace = true, features = ["v1"] }
+knus = { workspace = true }
+tracing = { workspace = true }
+miette = { workspace = true, features = [] }
+chrono = { workspace = true }
+lib-cfg = { workspace = true }
+lib-utils = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing-subscriber = { workspace = true, features = ["env-filter", "fmt"] }
+glob = { workspace = true }
+rayon = "1.11.0"
+
+[dev-dependencies]
+miette = { workspace = true, features = ["fancy"] }
+
+[lints]
+workspace = true

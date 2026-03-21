@@ -1,0 +1,6 @@
+[general]
+dirs = ["src/templates/files"]
+
+[[module]]
+ext = "tmpl"
+escaper = "txt"

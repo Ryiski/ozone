@@ -1,0 +1,12 @@
+zone domain=example.net ttl="3600" {
+    records {
+        soa ns=dns-core-1.example.labs email=dns.example.labs refresh="12h" retry="15m" expire="3w" min-ttl="2h"
+        ns name=@ ttl="86400" value=dns-core-1.example.labs.
+        ns name=@ ttl="86400" value=dns-core-2.example.labs.
+        a name=@ value="192.168.42.100/16"
+        a name=www value="192.168.42.100"
+        a name=* value="192.168.42.169"
+        aaaa name=www ttl="86400" value="fdf4:e2e0:df12:a142::100/64"
+        aaaa name=dns-core-2 ttl="86400" value="fdf4:e2e0:df12:a100::3/64"
+    }
+}

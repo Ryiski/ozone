@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "argh",
+    "knus",
+    "tmpl"
+  ],
+  "ignoreWords": [],
+  "ignorePaths": [
+    "package-lock.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders",
+    "./apps/client/src/data/areaCodes.json"
+  ],
+  "import": []
+}

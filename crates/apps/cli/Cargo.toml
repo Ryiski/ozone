@@ -1,0 +1,22 @@
+[package]
+name = "cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+argh = { workspace = true }
+derive_more = { workspace = true }
+lib-cfg = { workspace = true }
+lib-tmpl = { workspace = true }
+lib-utils = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+libc = { workspace = true }
+
+[lints]
+workspace = true
+
+
+[[bin]]
+name = "ozone"
+path = "src/main.rs"

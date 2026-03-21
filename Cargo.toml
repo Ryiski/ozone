@@ -1,0 +1,50 @@
+
+[workspace]
+resolver = "2"
+default-members = ["crates/apps/cli"]
+members = [
+    # -- Application Services
+    "crates/apps/cli",
+    # -- Application Libraries
+    "crates/libs/lib-cfg",
+    "crates/libs/lib-tmpl",
+    "crates/libs/lib-utils",
+
+
+]
+
+[workspace.dependencies]
+argh = "0.1.19"
+askama = "0.12"
+chrono = { version = "0.4.44", features = ["serde"] }
+derive_more = { version = "2.1.1", features = ["from", "display"] }
+dirs = "6.0.0"
+kdl = "6.5.0"
+knus = "3.3.1"
+lib-cfg = { path = "crates/libs/lib-cfg" }
+lib-tmpl = { path = "crates/libs/lib-tmpl" }
+lib-utils = { path = "crates/libs/lib-utils" }
+miette = "7.6.0"
+tokio = { version = "1.50.0", features = ["full"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23" }
+glob = "0.3.3"
+libc = "0.2.183"
+path-clean = "1.0.1"
+tracing-panic = "0.1.2"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+result_large_err = "allow"
+large_enum_variant = "allow"
+
+[profile.release]
+opt-level = "z"
+lto = true        # Enable Link Time Optimization
+codegen-units = 1 # Reduce number of codegen units to increase optimizations.
+panic = "abort"
+strip = true      # Automatically strip symbols from the binary.

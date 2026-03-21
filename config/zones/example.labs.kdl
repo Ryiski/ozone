@@ -1,0 +1,31 @@
+zone domain=example.labs ttl="3600" {
+    records {
+        soa ns=dns-core-1.example.labs email=dns.example.labs refresh="12h" retry="15m" expire="3w" min-ttl="2h"
+        ns name=@ ttl="86400" value=dns-core-1.example.labs.
+        ns name=@ ttl="86400" value=dns-core-2.example.labs.
+        a name=dns-core-1 ttl="86400" value="192.168.42.2/24"
+        a name=dns-core-2 ttl="86400" value="192.168.42.3/24"
+        a name=@ value="192.168.42.100/24"
+        a name=www value="192.168.42.100"
+        a name=*.www value="192.168.42.11"
+        a name=idm value="10.12.0.10/8"
+        a name=priv value="192.168.0.11/16"
+        //
+        aaaa name=dns-core-1 ttl="86400" value="fdf4:e2e0:df12:a100::2/64"
+        aaaa name=dns-core-2 ttl="86400" value="fdf4:e2e0:df12:a100::3/64"
+        aaaa name=*.www ttl="7200" value=fdf4:e2e0:df12:a100::11
+        aaaa name=www ttl="7200" value="fdf4:e2e0:df12:a100::11/64"
+        cname name=dns1 value=dns-core-1.example.labs.
+        cname name=dns2 value=dns-core-2.example.labs.
+        cname name=ns1 value=dns-core-1.example.labs.
+        cname name=ns2 value=dns-core-2.example.labs.
+        mx name=@ priority=1 value=ASPMX.L.GOOGLE.COM.
+        mx name=@ priority=5 value=ALT1.ASPMX.L.GOOGLE.COM.
+        mx name=@ priority=5 value=ALT2.ASPMX.L.GOOGLE.COM.
+        mx name=@ priority=10 value=ALT3.ASPMX.L.GOOGLE.COM.
+        mx name=@ priority=10 value=ALT4.ASPMX.L.GOOGLE.COM.
+        txt name=@ ttl="6400" value="v=spf1 includespf.dynect.net ~all"
+        txt name=mail value=google-auth
+        srv name=_ntp._udp value=idm.example.labs. port=123 priority=0 weight=100
+    }
+}
