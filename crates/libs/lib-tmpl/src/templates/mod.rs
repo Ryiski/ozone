@@ -21,7 +21,7 @@ impl<'a> GeneratorTemplate<'a> {
 			return Ok(());
 		}
 
-		let content = match self {
+		let mut content = match self {
 			GeneratorTemplate::BindZone(tmpl) => tmpl.render().map_err(|e| e.to_string())?,
 			GeneratorTemplate::Bind(tmpl) => tmpl.render().map_err(|e| e.to_string())?,
 			GeneratorTemplate::Zone(tmpl) => tmpl.render().map_err(|e| e.to_string())?,
@@ -30,6 +30,9 @@ impl<'a> GeneratorTemplate<'a> {
 		if let Some(parent) = path.parent() {
 			lib_utils::files::create_directory(parent).ok(); // Ensure parent directory exists
 		}
+
+		content = content.trim().to_string();
+		content += "\n";
 
 		fs::write(path, content)
 			.map_err(|e| format!("Failed to write to {}: {}", path.display(), e))?;

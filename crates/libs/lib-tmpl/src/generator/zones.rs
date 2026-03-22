@@ -6,7 +6,7 @@ use crate::{
 };
 
 pub fn generate_forward_zones(cfg: &lib_cfg::Config, out_dir: &Path) -> Result<(), String> {
-	let serial = utils::generate_serial(None);
+	let serial = utils::generate_serial();
 
 	for zone in &cfg.zones {
 		let zone_ttl = if !zone.ttl.is_empty() {
@@ -115,7 +115,7 @@ pub fn generate_reverse_zones(cfg: &lib_cfg::Config, out_dir: &Path) -> Result<(
 	let mut reverse_zones: HashMap<String, lib_cfg::zone::Zone> = HashMap::new();
 	let mut used: HashMap<String, HashMap<String, bool>> = HashMap::new();
 
-	let serial = utils::generate_serial(None);
+	let serial = utils::generate_serial();
 
 	for zone in &cfg.zones {
 		let zone_ttl = if !zone.ttl.is_empty() {

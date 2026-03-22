@@ -27,7 +27,7 @@ pub fn generate_adblock_zone_template(cfg: &lib_cfg::Config, out_dir: &Path) -> 
 			soa: lib_cfg::records::SoaRecord {
 				ns: cfg.adblock.soa.ns.clone(),
 				email: cfg.adblock.soa.email.clone(),
-				serial: utils::generate_serial(None),
+				serial: utils::generate_serial(),
 				refresh: cfg.adblock.soa.refresh.clone(),
 				retry: cfg.adblock.soa.retry.clone(),
 				expire: cfg.adblock.soa.expire.clone(),

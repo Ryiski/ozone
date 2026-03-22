@@ -1,3 +1,5 @@
+use chrono::Timelike;
+use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
 
@@ -54,14 +56,16 @@ pub fn string_in_slice(needle: &str, haystack: &[String]) -> bool {
 	haystack.contains(&needle.to_string())
 }
 
-pub fn generate_serial(datetime_strategy: Option<bool>) -> String {
-	let use_datetime = datetime_strategy.unwrap_or(true);
+pub fn generate_serial() -> String {
+	let now = Utc::now();
 
-	if use_datetime {
-		chrono::Local::now().format("%Y%m%d%H%M").to_string()
-	} else {
-		chrono::Local::now().timestamp().to_string()
-	}
+	let date: u32 = now.format("%Y%m%d").to_string().parse().unwrap();
+
+	let seconds = now.num_seconds_from_midnight();
+
+	let serial = date * 100000 + seconds;
+
+	serial.to_string()
 }
 
 pub fn calculate_max_record_component_length(zone: &lib_cfg::zone::Zone) -> MaxLengths {
